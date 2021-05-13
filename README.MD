@@ -77,12 +77,11 @@ Define the maven repositories required by the SDK as well as the dependencies by
 ``` java
 repositories {
    jcenter()
-   maven { url 'https://dl.bintray.com/doppllib/j2objc' }
    maven { url 'https://raw.githubusercontent.com/logmeinrescue/Rescue-Live-Android-SDK/master/maven/repository' }
 }
 ...
 dependencies {
-   implementation('com.logmein.rescuelive:sdk:1.0.0-beta.1')
+   implementation('com.logmein.rescuelive:sdk:1.0.0-beta.2')
 }
 ```
 
