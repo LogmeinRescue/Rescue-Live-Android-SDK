@@ -235,4 +235,4 @@ In case you experience a problem in the functionality of the app using RescueLiv
 
 ### `1.0.0-beta.2`
 
-1. Remove the https://dl.bintray.com/doppllib/j2objc maven repository in your build.gradle file
+1. Remove the https://dl.bintray.com/doppllib/j2objc maven repository from your build.gradle file.
