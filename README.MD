@@ -9,6 +9,7 @@
 - [SDK implications on your app](#sdk-implications-on-your-app)
 - [Data Masking](#data-masking)
 - [Bug report](#bug-report)
+- [Migration Guide](#migration-guide)
 
 ## Introduction
 The Rescue Live Mobile SDK allows your customers to establish a Rescue Live support session within your app.
@@ -229,3 +230,9 @@ In case you experience a problem in the functionality of the app using RescueLiv
 1. Listen to the `SupportSession` logs by setting a `LogListener` calling the `SupportSession::setLogListener(LogListener logListener)` method.
 2. Collect the messages you receive via the `LogListener::onLogMessage(String message)` method.
 3. Attach the logs to your bug report.
+
+## Migration guide
+
+### `1.0.0-beta.2`
+
+1. Remove the https://dl.bintray.com/doppllib/j2objc maven repository in your build.gradle file
