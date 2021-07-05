@@ -82,7 +82,7 @@ repositories {
 }
 ...
 dependencies {
-   implementation('com.logmein.rescuelive:sdk:1.0.0-beta.2')
+   implementation('com.logmein.rescuelive:sdk:1.0.0-beta.3')
 }
 ```
 
@@ -194,7 +194,7 @@ We estimate that our SDK increases the download size with about 5 MB, if you use
 Add the sensitive View objects to the `SupportSession` to hide sensitive information from the support representative before sending over the customer's screen.
 
 ---
-Add the sensitive View objects to the `SupportSession` before those will be drawn on the screen. 
+Add the sensitive View objects to the `SupportSession` before those will be drawn on the screen. You may remove the data mask from the sensitive View objects.
 
 ---
 
@@ -206,6 +206,12 @@ public void onStart() {
     View sensitiveView = findViewById(R.id.sensitiveView);
     supportSession.addDataMask(sensitiveView);
 }
+
+@Override
+public void onDestroy() {
+    View sensitiveView = findViewById(R.id.sensitiveView);
+    supportSession.removeDataMask(sensitiveView);
+}
 ```
 
 Kotlin example
@@ -214,6 +220,11 @@ Kotlin example
 override fun onStart() {
     val sensitiveView = findViewById(R.id.sensitiveView)
     supportSession.addDataMask(sensitiveView)
+}
+
+override fun onDestroy() {
+    val sensitiveView = findViewById(R.id.sensitiveView)
+    supportSession.removeDataMask(sensitiveView)
 }
 ```
 
