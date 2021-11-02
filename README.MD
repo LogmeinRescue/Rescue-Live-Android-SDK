@@ -112,7 +112,9 @@ public class YourClass implements SupportSession.StateListener {
 
     public YourClass(Context applicationContext) {
         SupportSession.Factory supportSessionFactory = SupportSession.Factory.newInstance("your_api_key");
-        supportSession = supportSessionFactory.create(applicationContext);
+        supportSession = supportSessionFactory
+        //  .disableRemoteControl() uncomment this, if you don't need remote control
+            .create(applicationContext);
         supportSession.setStateListener(this);
     }
 
@@ -143,7 +145,9 @@ class YourClass(applicationContext: Context) : SupportSession.StateListener {
 
     init {
         val supportSessionFactory = SupportSession.Factory.newInstance("your_api_key")
-        supportSession = supportSessionFactory.create(applicationContext)
+        supportSession = supportSessionFactory
+        //  .disableRemoteControl() uncomment this, if you don't need remote control
+            .create(applicationContext)
         supportSession.setStateListener(this)
     }
     
@@ -163,7 +167,8 @@ class YourClass(applicationContext: Context) : SupportSession.StateListener {
 
 1. You instantiate a `SupportSession` object with your API key and your application's context using the `SupportSession.Factory` class. Be awere that the `SupportSession` object is not re-usable as described in [Session states](#session-states).
 2. Call `supportSession.connect(pin)` with the 9-digit pin that was generated in the Agent console. The pin should be used without whitespaces as a String with length of 9, eg.: 123456789
-3. After a successfull connection, your `SupportSession.StateListener` will be notified with a `SupportSession.State.CONNECTED` and your mobile application's screen will automatically appear in the Agent console and you will be able to remotely control your app
+3. After a successfull connection, your `SupportSession.StateListener` will be notified with a `SupportSession.State.CONNECTED` and your mobile application's screen will automatically appear in the Agent console and you will be able to remotely control your app. You can disable remote control by calling `disableRemoteControl()` on the `SupportSession.Factory` class.
+
 4. Your support session may end in one of the following cases (in each case your `SupportSession.StateListener` will be notified with a `SupportSession.State.DISCONNECTED` state):
     - The session is ended in the Agent console
     - You call `supportSession.disconnect()` in your application
